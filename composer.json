@@ -1,57 +1,57 @@
 {
-    "name": "abraham-flutterwave/laravel-payment",
-    "description": "The Official Flutterwave Package for Laravel.",
-    "type": "laravel-library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Flutterwave\\Payments\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Flutterwave\\Payments\\Tests\\": "tests/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Flutterwave Developers",
-            "email": "developers@flutterwavego.com",
-            "homepage": "https://flutterwave.com/ng/"
-        }
-    ],
-    "require": {
-        "php": "^7.4 || ^8.0",
-        "illuminate/support": "^7.0|^v8.83|^9.39|^10.0|^11.0",
-        "ext-json": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-      "sort-packages": true,
-      "preferred-install": "dist",
-      "optimize-autoloader": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "require-dev": {
-        "laravel/pint": "^1.2",
-        "nunomaduro/phpinsights": "^2.6",
-        "orchestra/testbench": "^7.11",
-        "pestphp/pest": "^1.22"
-    },
-    "extra": {
-      "laravel": {
-        "providers": [
-          "Flutterwave\\Payments\\Providers\\FlutterwaveServiceProvider"
-        ],
-        "aliases": {
-          "Flutterwave": "Flutterwave\\Payments\\Facades\\Flutterwave"
-        }
+  "name": "abraham-flutterwave/laravel-payment",
+  "description": "The Official Flutterwave Package for Laravel.",
+  "type": "laravel-library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Flutterwave\\Payments\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Flutterwave\\Payments\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Flutterwave Developers",
+      "email": "developers@flutterwavego.com",
+      "homepage": "https://flutterwave.com/ng/"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0 || ^8.2",
+    "illuminate/support": "^7.0|^v8.83|^9.39|^10.0|^11.0|^12.0",
+    "ext-json": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist",
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "require-dev": {
+    "laravel/pint": "^1.2",
+    "nunomaduro/phpinsights": "^2.6",
+    "orchestra/testbench": "^7.11",
+    "pestphp/pest": "^1.22"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Flutterwave\\Payments\\Providers\\FlutterwaveServiceProvider"
+      ],
+      "aliases": {
+        "Flutterwave": "Flutterwave\\Payments\\Facades\\Flutterwave"
       }
-    },
+    }
+  },
   "scripts": {
     "test": "pest",
     "cs": "phpcs",
