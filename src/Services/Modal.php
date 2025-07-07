@@ -123,7 +123,7 @@ final class Modal
         $required = ['amount', 'customer'];
 
         foreach ($required as $key) {
-            if (! isset($request[$key])) {
+            if (!isset($request[$key])) {
                 $this->logger->notice("Flutterwave Modal::Missing required field {$key} [standard request]");
                 throw new InvalidArgument("Missing required field {$key}");
             }
@@ -152,11 +152,24 @@ final class Modal
 
         try {
             $response = Http::withToken($this->secretKey)->post("{$baseUrl}/{$apiVersion}/{$specific_route}", $request);
-        } catch(ConnectionException $e) {
+        } catch (ConnectionException $e) {
             throw new NetworkConnection('please check your network connection. Unable to connect to Flutterwave APIs.');
         }
 
         $this->handleResponse($response);
+
+        $status = $response->json()['status'] ?? null;
+        $message = $response->json()['message'] ?? null;
+        $data = $response->json()['data'] ?? null;
+
+        if ($status !== 'success') {
+            $jsonData = $data != null ? json_encode($data) : 'Failed to generate payment link';
+            throw new Exception($message ?? "{$jsonData}");
+        }
+
+        if (empty($data['link'])) {
+            throw new Exception("Failed to generate payment link");
+        }
 
         return $response->json()['data']['link'];
     }
